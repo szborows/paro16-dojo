@@ -3,7 +3,30 @@
 
 struct Memory final {
     using MemoryCell = unsigned char;
-    using MemoryCells = std::vector<MemoryCell>;
+
+    MemoryCell get() const {
+        return {}; // TODO
+    }
+
+    void set(MemoryCell const value) {
+        // TODO
+    }
+
+    void increment() {
+        // TODO
+    }
+
+    void decrement() {
+        // TODO
+    }
+
+    void moveLeft() {
+        // TODO
+    }
+
+    void moveRight() {
+        // TODO
+    }
 
     Memory()
         : memory_(2000, 0)
@@ -13,31 +36,8 @@ struct Memory final {
     Memory(Memory const&) = delete;
     Memory& operator=(Memory const&) = delete;
 
-    MemoryCell get() const {
-        return (*it_);
-    }
-
-    void set(MemoryCell const value) {
-        *it_ = value;
-    }
-
-    void increment() {
-        ++(*it_);
-    }
-
-    void decrement() {
-        --(*it_);
-    }
-
-    void moveLeft() {
-        --it_;
-    }
-
-    void moveRight() {
-        ++it_;
-    }
-
 private:
+    using MemoryCells = std::vector<MemoryCell>;
     MemoryCells memory_;
     MemoryCells::iterator it_;
 };
