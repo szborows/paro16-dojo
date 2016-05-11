@@ -14,6 +14,7 @@ TEST_CASE( "Brainfuck interpreter test cases", "[interp]" ) {
         REQUIRE( interpreter.interpret(code, input) == "todo" );
     }
 
+#if 0
     SECTION( "outputting memory without any prior operations yields zeroes" ) {
         Code code{".........."};
         Input input{""};
@@ -39,31 +40,25 @@ TEST_CASE( "Brainfuck interpreter test cases", "[interp]" ) {
     }
 
     SECTION( "simple loops' steps are stepped through" ) {
-        Code code{",[.]"};
+        Code code{",[.-]"};
         Input input{"\5"};
         REQUIRE( interpreter.interpret(code, input) == "todo" );
     }
 
     SECTION( "nested loops' are evaluated in order" ) {
-        Code code{",[.>+[+.-]<]"};
+        Code code{",[.>+[.-]<-]"};
         Input input{"\5"};
         REQUIRE( interpreter.interpret(code, input) == "todo" );
     }
 
-    SECTION( "nested loops' are evaluated in order - doubled" ) {
-        Code code{",[.>+[+.-]<],[.>+[+.-]<]"};
-        Input input{"\5\5"};
-        REQUIRE( interpreter.interpret(code, input) == "todo" );
-    }
-
     SECTION( "overflow test" ) {
-        Code code{",+"};
+        Code code{",+."};
         Input input{"\255"};
         REQUIRE( interpreter.interpret(code, input) == "todo" );
     }
 
     SECTION( "underflow test" ) {
-        Code code{",-"};
+        Code code{",-."};
         Input input{"\0"};
         REQUIRE( interpreter.interpret(code, input) == "todo" );
     }
@@ -73,6 +68,7 @@ TEST_CASE( "Brainfuck interpreter test cases", "[interp]" ) {
         Input input{"a"};
         REQUIRE( interpreter.interpret(code, input) == "todo" );
     }
+#endif
 
 #if 0
     SECTION( "self interpreter" ) {
