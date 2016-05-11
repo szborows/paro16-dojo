@@ -68,9 +68,7 @@ TEST_CASE( "Brainfuck interpreter test cases", "[interp]" ) {
         Input input{"a"};
         REQUIRE( interpreter.interpret(code, input) == "todo" );
     }
-#endif
 
-#if 0
     SECTION( "self interpreter" ) {
         Code code{
             ">>>+[[-]>>[-]++>+>+++++++[<++++>>++<-]++>>+>+>+++++[>++>++++++<<-]+>>>,<++[[>["
